@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Progate</title>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+</head>
+<body>
+<div>あいうえお</div>
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'ja'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00D5h000004Mlc0',
+				'testKumikomiBot',
+				'https://cunning-badger-atqhau-dev-ed.my.site.com/ESWtestKumikomiBot1712575347719',
+				{
+					scrt2URL: 'https://cunning-badger-atqhau-dev-ed.my.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://cunning-badger-atqhau-dev-ed.my.site.com/ESWtestKumikomiBot1712575347719/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+  <footer>
+    <div class="container">
+      <img src="https://prog-8.com/images/html/advanced/footer_logo.png">
+      <p>Learn to Code, Learn to be Creative.</p>
+    </div>
+  </footer>
+</body>
+</html>
