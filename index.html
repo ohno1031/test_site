@@ -61,6 +61,19 @@
 -->
 
 <script type='text/javascript'>
+	/*
+	 iframeの高さを動的に調整:
+	
+	adjustIframeHeight 関数は、iframeのコンテンツの高さを取得し、その高さに基づいてiframeの高さを設定します。
+	iframe.contentWindow.document.body.scrollHeight を使用して、iframe内のコンテンツの高さを取得します。
+	iframeの読み込み後に高さを調整:
+	
+	iframe の onload イベントを使用して、コンテンツが読み込まれた後に高さを調整します。
+	ウィンドウのリサイズ時に高さを調整:
+	
+	ウィンドウのリサイズイベントをリスンして、iframeの高さを再調整します。これにより、ウィンドウサイズが変更された場合でもiframeの高さが適切に調整されます。
+	*/
+
 	// script.js
 	function adjustIframeHeight() {
 	    var iframe = document.getElementById('dynamic-iframe');
