@@ -6,6 +6,13 @@
 
 <!--
   <style type="text/css">
+	/*
+	position: fixed; - これにより、iframeがスクロールに追随して常に画面の同じ位置に表示されます。
+	bottom: 10px; right: 10px; - 画面の右下に配置するための設定です。必要に応じて値を調整してください。
+	width, height - iframeのサイズを指定します。PC版とスマホ版で異なるサイズを設定する場合は、メディアクエリを使用します。
+	z-index: 1000; - 他の要素より前面に表示するための設定です。必要に応じて値を調整してください。
+	*/
+	
 	/* styles.css */
 	#dynamic-iframe {
 	    position: fixed;
@@ -34,7 +41,7 @@
 
 ---------------------
 <div class="iframe-wrapper">
-<iframe id="dynamic-iframe" src="https://cunning-badger-atqhau-dev-ed--c.vf.force.com/apex/jdsp_demo_iframe_chat" style="border:0; height:402px;"></iframe>
+<iframe id="dynamic-iframe" src="https://cunning-badger-atqhau-dev-ed--c.vf.force.com/apex/jdsp_demo_iframe_chat" style="border:0; "></iframe>
 </div>
 ---------------------
 	
