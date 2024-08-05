@@ -6,19 +6,24 @@
 
 <!--
   <style type="text/css">
-	.iframe-wrapper {
-	  position: relative;
-	  padding-bottom: 56.25%;
-	  height: 0;
-	  overflow: hidden;
+	/* styles.css */
+	#dynamic-iframe {
+	    position: fixed;
+	    bottom: 10px; /* 画面の下からの距離 */
+	    right: 10px;  /* 画面の右からの距離 */
+	    width: 300px; /* 初期の幅 */
+	    height: auto; /* 高さは自動調整 */
+	    border: 1px solid #ccc; /* 任意のスタイル */
+	    z-index: 1000; /* 他の要素より前面に表示 */
 	}
 	
-	.iframe-wrapper iframe {
-	  position: absolute;
-	  top: 0;
-	  left: 0;
-	  width: 100%;
-	  height: 100%;
+	/* スマホ版のスタイル調整 */
+	@media (max-width: 600px) {
+	    #dynamic-iframe {
+	        width: 100px; /* スマホ版の幅 */
+	        bottom: 5px; /* スマホ版の下からの距離 */
+	        right: 5px;  /* スマホ版の右からの距離 */
+	    }
 	}
    </style>
  -->
@@ -29,7 +34,7 @@
 
 ---------------------
 <div class="iframe-wrapper">
-<iframe src="https://cunning-badger-atqhau-dev-ed--c.vf.force.com/apex/jdsp_demo_iframe_chat" style="border:0; height:402px;"></iframe>
+<iframe id="dynamic-iframe" src="https://cunning-badger-atqhau-dev-ed--c.vf.force.com/apex/jdsp_demo_iframe_chat" style="border:0; height:402px;"></iframe>
 </div>
 ---------------------
 	
@@ -54,5 +59,24 @@
 </script>
 <script type='text/javascript' src='https://cunning-badger-atqhau-dev-ed.my.site.com/ESWtestKumikomiBot1712575347719/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 -->
+
+<script type='text/javascript'>
+	// script.js
+	function adjustIframeHeight() {
+	    var iframe = document.getElementById('dynamic-iframe');
+	    if (iframe.contentWindow.document.body) {
+	        iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+	    }
+	}
+	
+	// iframeのコンテンツが読み込まれた後に高さを調整
+	document.getElementById('dynamic-iframe').onload = function() {
+	    adjustIframeHeight();
+	};
+	
+	// iframeのコンテンツが動的に変更された場合に高さを調整
+	window.addEventListener('resize', adjustIframeHeight);
+</script>
+	
 </body>
 </html>
