@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>大阪タイル 注文フォーム</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 650px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-top: 12px;
+      font-weight: bold;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px;
+      width: 100%;
+      background: #0066cc;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #004d99;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>大阪タイル 注文フォーム</h1>
+    <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
+
+      <!-- Salesforce組織のID（必ず本番環境のものに差し替え） -->
+      <input type="hidden" name="oid" value="XXXXXXXXXXXXXXXXXXXXXXX">
+      <!-- 完了後にリダイレクトするURL -->
+      <input type="hidden" name="retURL" value="https://www.osaka-tile.co.jp/thanks.html">
+
+      <label for="company">会社名</label>
+      <input id="company" name="company" type="text" required>
+
+      <label for="last_name">ご担当者名</label>
+      <input id="last_name" maxlength="80" name="last_name" type="text" required>
+
+      <label for="email">メールアドレス</label>
+      <input id="email" maxlength="80" name="email" type="email" required>
+
+      <label for="phone">電話番号</label>
+      <input id="phone" maxlength="40" name="phone" type="text">
+
+      <label for="category">商品カテゴリ</label>
+      <select id="category" name="00NXXXXXXXXXXXX" required> <!-- ★カテゴリ用のカスタム項目API名 -->
+        <option value="">選択してください</option>
+        <option value="ハイグレードタイル">ハイグレードタイル</option>
+        <option value="ベーシックグレードタイル">ベーシックグレードタイル</option>
+      </select>
+
+      <label for="product">商品名</label>
+      <select id="product" name="00NYYYYYYYYYYYY" required> <!-- ★商品名用のカスタム項目API名 -->
+        <option value="">カテゴリを選択してください</option>
+      </select>
+
+      <label for="quantity">数量</label>
+      <input id="quantity" name="00NZZZZZZZZZZZZ" type="number" min="1" required> <!-- ★数量カスタム項目 -->
+
+      <label for="details">その他ご要望</label>
+      <textarea id="details" name="description" rows="4"></textarea>
+
+      <button type="submit">注文する</button>
+    </form>
+  </div>
+
+  <script>
+    // カテゴリと商品リストの連動処理
+    const productOptions = {
+      "ハイグレードタイル": ["マーズ", "ハードウッド", "ウォータープロテクト"],
+      "ベーシックグレードタイル": ["カンキョー", "モダン", "アーバン", "ナチュラル", "デュラビティ", "ビビッド"]
+    };
+
+    const categorySelect = document.getElementById("category");
+    const productSelect = document.getElementById("product");
+
+    categorySelect.addEventListener("change", function() {
+      const selectedCategory = categorySelect.value;
+      productSelect.innerHTML = '<option value="">選択してください</option>';
+      if (productOptions[selectedCategory]) {
+        productOptions[selectedCategory].forEach(product => {
+          const option = document.createElement("option");
+          option.value = product;
+          option.textContent = product;
+          productSelect.appendChild(option);
+        });
+      }
+    });
+  </script>
+</body>
+</html>
