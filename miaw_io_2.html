@@ -1,26 +1,33 @@
-<!-- 組み込みコードここから -->
-<script>
-  var timestamp = new Date().getTime();
-  var script = document.createElement('script');
-  var path = 'https://jalsfa--cvsaipsv02.sandbox.my.site.com/resource/JDSP_EmbeddedChatbot?v='
-  script.src = path + timestamp;
-  script.type = 'text/javascript';
-  script.async = true;
-  script.onload = function() {
-      startJDSP_Miaw();
-  };
-  document.body.appendChild(script);        
-
-  function startJDSP_Miaw() {
-      document.dispatchEvent(new CustomEvent('miawConfig', {
-         detail: {
-             bot: 'JDSP_EmbeddedService_INT',
-             language: 'en',
-             district: 'AR',
-             countryRegion: 'UK',
-             siteURL: window.location.href
-         }
-     }));
-  }
-</script>
-<!-- 組み込みコードここまで -->
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+  <!-- 組み込みコードここから -->
+  <script>
+    var timestamp = new Date().getTime();
+    var script = document.createElement('script');
+    var path = 'https://jalsfa--cvsaipsv02.sandbox.my.site.com/resource/JDSP_EmbeddedChatbot?v='
+    script.src = path + timestamp;
+    script.type = 'text/javascript';
+    script.async = true;
+    script.onload = function() {
+        startJDSP_Miaw();
+    };
+    document.body.appendChild(script);        
+  
+    function startJDSP_Miaw() {
+        document.dispatchEvent(new CustomEvent('miawConfig', {
+           detail: {
+               bot: 'JDSP_EmbeddedService_INT',
+               language: 'en',
+               district: 'AR',
+               countryRegion: 'UK',
+               siteURL: window.location.href
+           }
+       }));
+    }
+  </script>
+  <!-- 組み込みコードここまで -->
+</body>
+</html>
