@@ -1,0 +1,21 @@
+   <!-- 実際にJSを埋め込む -->
+    <!-- 組み込みコードここから -->
+    <script type='text/javascript' src='https://jalsfa--cvsaipsv02.sandbox.my.site.com/resource/JDSP_EmbeddedChatbot?v=11' ></script>
+    <script>
+        // VF上のプルダウンからパラメータを取得
+        console.log('埋め込みサイト側のイベント発火前');
+
+        document.dispatchEvent(new CustomEvent('miawConfig', {
+
+            detail: {
+                bot: 'JDSP_EmbeddedService_INT',
+                language: 'en',
+                district: 'AR',
+                countryRegion: 'IT',
+                siteURL: window.location.href
+            }
+        }));
+
+    </script>
+
+    <!-- 組み込みコードここまで -->
